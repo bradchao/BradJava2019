@@ -12,11 +12,22 @@ public class PokerV3 {
 			poker[rand] = poker[i];
 			poker[i] = temp;
 		}
-		
 		for (int v : poker) {
 			System.out.println(v);
 		}
-
+		System.out.println("----");
+		
+		int[][] players = new int[4][13];
+		for (int i=0; i<poker.length; i++) {
+			players[i%4][i/4] = poker[i];
+		}
+		
+		for (int v : players[0]) {
+			System.out.println(v);
+		}
+		
+		
+		
 		
 	}
 }
