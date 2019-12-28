@@ -7,7 +7,7 @@ public class Scooter extends Bike {
 
 	public Scooter() {
 		// super();
-		//super(4);
+		super(4);
 		System.out.println("Scooter()");
 	}
 	
