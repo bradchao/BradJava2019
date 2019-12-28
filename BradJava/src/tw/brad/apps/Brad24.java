@@ -1,13 +1,43 @@
 package tw.brad.apps;
 
+import javax.swing.JOptionPane;
+
 public class Brad24 {
 	public static void main(String[] args) {
 		Brad24 obj = new Brad24();
 		String answer = obj.createAnswer(3);
-		System.out.println(answer);
+		//System.out.println(answer);
+		
+		boolean isWinner = false;
+		for(int i=0; i<10; i++) {
+			String guess = JOptionPane.showInputDialog("輸入數字");
+			String result = obj.checkAB(answer, guess); 
+			JOptionPane.showMessageDialog(null, result);
+			if (result.equals("3A0B")) {
+				isWinner = true;
+				break;
+			}
+		}
+		
+		if (isWinner) {
+			JOptionPane.showMessageDialog(null, "Winner");
+		}else {
+			JOptionPane.showMessageDialog(null, "Loser: " + answer);
+		}
 		
 		
-		
+	}
+	
+	String checkAB(String a, String g) {
+		int A, B; A = B = 0;
+		for (int i=0; i<a.length(); i++) {
+			if (a.charAt(i) == g.charAt(i)) {
+				A++;
+			}else if(a.indexOf(g.charAt(i)) != -1) {
+				B++;
+			}
+		}
+		return A + "A" + B + "B";
 	}
 	
 	String createAnswer(int d) {
