@@ -6,12 +6,17 @@ public class Brad24 {
 	public static void main(String[] args) {
 		Brad24 obj = new Brad24();
 		String answer = obj.createAnswer(3);
-		//System.out.println(answer);
+		System.out.println(answer);
 		
 		boolean isWinner = false;
+		StringBuffer log = new StringBuffer();
 		for(int i=0; i<10; i++) {
-			String guess = JOptionPane.showInputDialog("輸入數字");
-			String result = obj.checkAB(answer, guess); 
+			String guess = JOptionPane.showInputDialog((i+1)+ " 輸入數字\n" + log.toString());
+			
+			if (!obj.checkGuess(guess)) continue;
+			
+			String result = obj.checkAB(answer, guess);
+			log.append(guess + " => " + result + "\n");
 			JOptionPane.showMessageDialog(null, result);
 			if (result.equals("3A0B")) {
 				isWinner = true;
@@ -26,6 +31,14 @@ public class Brad24 {
 		}
 		
 		
+	}
+	
+	boolean checkGuess(String g) {
+		boolean ret = false;
+		if (g.matches("^[0-9]{3}$")) {
+			
+		}
+		return ret;
 	}
 	
 	String checkAB(String a, String g) {
