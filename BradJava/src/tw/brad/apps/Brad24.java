@@ -4,8 +4,9 @@ import javax.swing.JOptionPane;
 
 public class Brad24 {
 	public static void main(String[] args) {
+		int len = 3;
 		Brad24 obj = new Brad24();
-		String answer = obj.createAnswer(3);
+		String answer = obj.createAnswer(len);
 		System.out.println(answer);
 		
 		boolean isWinner = false;
@@ -13,7 +14,7 @@ public class Brad24 {
 		for(int i=0; i<10; i++) {
 			String guess = JOptionPane.showInputDialog((i+1)+ " 輸入數字\n" + log.toString());
 			
-			if (!obj.checkGuess(guess)) continue;
+			if (!obj.checkGuess(guess, len)) continue;
 			
 			String result = obj.checkAB(answer, guess);
 			log.append(guess + " => " + result + "\n");
@@ -33,10 +34,20 @@ public class Brad24 {
 		
 	}
 	
-	boolean checkGuess(String g) {
+	boolean checkGuess(String g, int len) {
 		boolean ret = false;
-		if (g.matches("^[0-9]{3}$")) {
-			
+		if (g.matches("^[0-9]{" + len + "}$")) {
+			boolean isDup = false;
+			for (int i=0; i<len-1; i++) {
+				char c = g.charAt(i);
+				if (g.substring(i+1).indexOf(c) >= 0 ) {
+					isDup = true;
+					break;
+				}
+			}
+			ret = !isDup;
+		}else {
+			ret = false;
 		}
 		return ret;
 	}
