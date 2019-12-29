@@ -19,7 +19,7 @@ public class Brad24 {
 			String result = obj.checkAB(answer, guess);
 			log.append(guess + " => " + result + "\n");
 			JOptionPane.showMessageDialog(null, result);
-			if (result.equals("3A0B")) {
+			if (result.equals(len+ "A0B")) {
 				isWinner = true;
 				break;
 			}
