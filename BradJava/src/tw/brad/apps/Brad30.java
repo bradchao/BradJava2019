@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -35,6 +37,7 @@ public class Brad30 extends JFrame implements ActionListener {
 	private void initRound() {
 		counter = 0;
 		answer = createAnswer(3);
+		log.setText("");
 		System.out.println(answer);
 	}
 	
@@ -49,11 +52,11 @@ public class Brad30 extends JFrame implements ActionListener {
 		add(topLine, BorderLayout.NORTH);
 		
 		log = new JTextArea();
-		
 		log.setEditable(false);
+		JScrollPane jsp = new JScrollPane(log);
 		
 		
-		add(log, BorderLayout.CENTER);
+		add(jsp, BorderLayout.CENTER);
 	}
 	
 	
@@ -72,14 +75,21 @@ public class Brad30 extends JFrame implements ActionListener {
 		
 		if (result.equals("3A0B")) {
 			showPromptDialog(true);
-		}else if (counter == 10) {
+		}else if (counter == 20) {
 			showPromptDialog(false);
 		}
 		
 	}
 	
 	private void showPromptDialog(boolean isWinner) {
-		
+		String mesg = isWinner?"WINNER":"Loser: " + answer;
+		int yesOrNo = JOptionPane.showConfirmDialog(
+				this, mesg + "Play new Game?", "Result", JOptionPane.YES_NO_OPTION);
+		if (yesOrNo == JOptionPane.YES_OPTION) {
+			initRound();
+		}else if (yesOrNo == JOptionPane.NO_OPTION) {
+			System.exit(0);
+		}
 	}
 	
 	private String createAnswer(int d) {
