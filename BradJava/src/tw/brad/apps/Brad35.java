@@ -21,7 +21,8 @@ public class Brad35 extends JFrame {
 		JPanel content = new JPanel();
 		add(content, BorderLayout.CENTER);
 		
-		content.addMouseListener(new MyListener(this));
+		//content.addMouseListener(new MyListener(this));
+		content.addMouseListener(new MyListenerV2());
 		
 		setVisible(true);
 		setSize(640, 480);
@@ -33,6 +34,13 @@ public class Brad35 extends JFrame {
 	}
 	public static void main(String[] args) {
 		new Brad35();
+	}
+	
+	private class MyListenerV2 extends MouseAdapter {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			mesg.setText(e.getX() + ", " + e.getY());
+		}
 	}
 
 }
