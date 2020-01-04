@@ -22,7 +22,21 @@ public class Brad35 extends JFrame {
 		add(content, BorderLayout.CENTER);
 		
 		//content.addMouseListener(new MyListener(this));
-		content.addMouseListener(new MyListenerV2());
+		//content.addMouseListener(new MyListenerV2());
+		content.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				mesg.setText(e.getX() + ", " + e.getY());
+			}
+		});
+		content.addMouseMotionListener(new MouseAdapter() {
+
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				mesg.setText(e.getX() + ", " + e.getY());
+			}
+			
+		});
 		
 		setVisible(true);
 		setSize(640, 480);
