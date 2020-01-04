@@ -15,6 +15,7 @@ public class Brad30 extends JFrame implements ActionListener {
 	private JTextField input;
 	private JTextArea log;
 	private String answer;
+	private int counter;
 	
 	public Brad30() {
 		super("Guess Number");
@@ -32,7 +33,9 @@ public class Brad30 extends JFrame implements ActionListener {
 	}
 	
 	private void initRound() {
+		counter = 0;
 		answer = createAnswer(3);
+		System.out.println(answer);
 	}
 	
 	private void initView() {
@@ -46,6 +49,10 @@ public class Brad30 extends JFrame implements ActionListener {
 		add(topLine, BorderLayout.NORTH);
 		
 		log = new JTextArea();
+		
+		log.setEditable(false);
+		
+		
 		add(log, BorderLayout.CENTER);
 	}
 	
@@ -56,9 +63,22 @@ public class Brad30 extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
+		counter++;
 		String userInput = input.getText();
 		String result = checkAB(answer, userInput);
-		log.append(userInput + " => " + result +"\n");
+		log.append(counter + ". " + userInput + " => " + result +"\n");
+		
+		input.setText("");
+		
+		if (result.equals("3A0B")) {
+			showPromptDialog(true);
+		}else if (counter == 10) {
+			showPromptDialog(false);
+		}
+		
+	}
+	
+	private void showPromptDialog(boolean isWinner) {
 		
 	}
 	
