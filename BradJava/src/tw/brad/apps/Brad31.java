@@ -21,6 +21,11 @@ public class Brad31 {
 		obj2.m1();
 		obj3.m1();
 		
+		String s1= "Brad";
+//		if (s1 instanceof Brad311) {
+//			
+//		}
+		
 	}
 	
 	static void test1(Brad311 objx) {
