@@ -37,12 +37,19 @@ public class Brad57 {
 	}
 
 }
-class Brad571 {
+class Brad571 implements Serializable   {
 	Brad571(){System.out.println("Brad571()");}
 }
-class Brad572 extends Brad571 {
+class Brad572 extends Brad571{
 	Brad572(){System.out.println("Brad572()");}
 }
-class Brad573 extends Brad572 implements Serializable {
-	Brad573(){System.out.println("Brad573()");}
+class Brad573 extends Brad572{
+	Brad brad;
+	Brad573(){
+		System.out.println("Brad573()");
+		brad = new Brad();
+	}
+}
+class Brad implements Serializable {
+	Brad(){System.out.println("Brad()");}
 }
