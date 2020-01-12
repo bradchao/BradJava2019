@@ -9,7 +9,7 @@ public class Brad61 {
 	public static void main(String[] args) {
 		try {
 			Socket socket = new Socket(
-					InetAddress.getByName(""), 7777);
+					InetAddress.getByName("127.0.0.1"), 7777);
 			OutputStream out = socket.getOutputStream();
 			
 			out.write("Hello, Brad\nHello, OK".getBytes());
