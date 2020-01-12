@@ -5,12 +5,15 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -90,6 +93,22 @@ public class MyEditor extends JFrame {
 	}
 	
 	private void saveFile() {
+		if (openFile == null) {
+			saveasFile();
+		}else {
+			try {
+				BufferedWriter writter = new BufferedWriter(
+						new FileWriter(openFile));
+				writter.write(jta.getText());
+				writter.flush();
+				writter.close();
+				JOptionPane.showMessageDialog(this, "Save OK");
+			}catch(Exception e) {
+				System.out.println(e.toString());
+			}
+		}
+		
+		
 		
 	}
 	
