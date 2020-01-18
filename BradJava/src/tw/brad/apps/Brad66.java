@@ -23,7 +23,10 @@ public class Brad66 {
 			Properties prop = new Properties();
 			prop.put("user", "root");
 			prop.put("password", "123456");
-			prop.put("serverTimezone", "Asia/Taipei");
+			// useUnicode=true&characterEncoding=UTF-8
+			prop.put("useUnicode", "true");
+			prop.put("characterEncoding", "UTF-8");
+			//prop.put("serverTimezone", "Asia/Taipei");
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/iii", prop);
 			Statement stmt = conn.createStatement();
