@@ -44,7 +44,7 @@ public class Brad67 {
 			// useUnicode=true&characterEncoding=UTF-8
 			prop.put("useUnicode", "true");
 			prop.put("characterEncoding", "UTF-8");
-			//prop.put("serverTimezone", "Asia/Taipei");
+			prop.put("serverTimezone", "Asia/Taipei");
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/iii", prop);
 			String sql = "INSERT INTO food (fname,tel,addr,city,town,lat,lng,pic)" +
@@ -71,17 +71,17 @@ public class Brad67 {
 				String pic = row.getString("PicURL");
 				
 				pstmt.setString(1, fname);
-				pstmt.setString(2, fname);
-				pstmt.setString(3, fname);
-				pstmt.setString(4, fname);
-				pstmt.setString(5, fname);
-				pstmt.setString(6, fname);
-				pstmt.setString(7, fname);
-				pstmt.setString(8, fname);
-				
+				pstmt.setString(2, tel);
+				pstmt.setString(3, addr);
+				pstmt.setString(4, city);
+				pstmt.setString(5, town);
+				pstmt.setString(6, lat);
+				pstmt.setString(7, lng);
+				pstmt.setString(8, pic);
+				pstmt.executeUpdate();
 			}
 			
-			
+			System.out.println("Step 2 OK");
 			
 		}catch(Exception e) {
 			System.out.println(e.toString());
