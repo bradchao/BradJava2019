@@ -7,6 +7,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.Properties;
 
 import org.json.JSONArray;
@@ -47,6 +48,12 @@ public class Brad67 {
 			prop.put("serverTimezone", "Asia/Taipei");
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/iii", prop);
+			
+			Statement stmt = conn.createStatement();
+			stmt.execute("create table foodv2 (id integer primary key auto_increment,fname varchar(10),tel varchar(10))");
+			
+			stmt.executeUpdate("delete from food");
+			
 			String sql = "INSERT INTO food (fname,tel,addr,city,town,lat,lng,pic)" +
 					" VALUES (?,?,?,?,?,?,?,?)";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
