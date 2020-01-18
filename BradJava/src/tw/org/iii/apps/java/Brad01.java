@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class Brad01 {
 
 	public static void main(String[] args) {
+		try {
+		Class.forName("com.mysql.jdbc.Driver");
+		}catch(Exception e){System.out.println("XX");}
 		Scanner scanner = new Scanner(System.in);
 		int x = scanner.nextInt();
 		int y = scanner.nextInt();
